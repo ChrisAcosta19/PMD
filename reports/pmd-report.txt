@@ -1,0 +1,1 @@
+src/main/java/labcodeinspection/Email.java:63:	CommentRequired:	CommentRequired: Public method and constructor comments are required

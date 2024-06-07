@@ -1,24 +1,38 @@
 package labcodeinspection;
 
+import java.util.Locale;
+
 public class Email {
 
-	private String m_firstName;
-	private String m_lastName;
-	private String password = null;
+	private final String m_firstName;
+	private final String m_lastName;
+	private String password;
 	private String department;
-	private int defaultpasswordLength = 8;
+	private final int defaultpasswordLength = 8;
 	private String email;
 
+	/**
+	 * 
+	 * @param firstName First Name of the user
+	 * @param lastName Last Name of the user
+	 */
 	public Email(String firstName, String lastName) {
 		this.m_firstName = firstName;
 		this.m_lastName = lastName;
 	}
 
+	/**
+	 * Show all the info of the object 
+	 */
 	public void showInfo() {
 		System.out.println("\nFIRST NAME= " + m_firstName + "\nLAST NAME= " + m_lastName);
 		System.out.println("DEPARMENT= " + department + "\nEMAIL= " + email + "\nPASSWORD= " + password);
 	}
 
+	/**
+	 * 
+	 * @param depChoice an int to establish the value of department attribute
+	 */
 	public void setDeparment(int depChoice) {
 		switch (depChoice) {
 		case 1:
@@ -30,6 +44,8 @@ public class Email {
 		case 3:
 			this.department = "acct";
 			break;
+		default:
+			System.out.println("Unsupported value");
 		}
 	}
 
@@ -43,9 +59,13 @@ public class Email {
 		return new String(password);
 	}
 
+	/**
+	 * Generates the email and password of the user
+	 */
 	public void generateEmail() {
 		this.password = this.randomPassword(this.defaultpasswordLength);
-		this.email = this.m_firstName.toLowerCase() + this.m_lastName.toLowerCase() + "@" + this.department
-				+ ".espol.edu.ec";
+		this.email = this.m_firstName.toLowerCase(Locale.ROOT) +
+				this.m_lastName.toLowerCase(Locale.ROOT) +
+				"@" + this.department + ".espol.edu.ec";
 	}
 }
